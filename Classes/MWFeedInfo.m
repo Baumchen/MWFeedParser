@@ -33,7 +33,7 @@
 
 @implementation MWFeedInfo
 
-@synthesize title, link, summary, url;
+@synthesize title, link, summary, url, imageLink, imageTitle, imageURL;
 
 #pragma mark NSObject
 
@@ -54,6 +54,10 @@
 		link = [decoder decodeObjectForKey:@"link"];
 		summary = [decoder decodeObjectForKey:@"summary"];
 		url = [decoder decodeObjectForKey:@"url"];
+        NSDictionary *image = [decoder decodeObjectForKey:@"image"];
+        imageLink = [image valueForKey:@"link"];
+        imageTitle = [image valueForKey:@"title"];
+        imageURL = [image valueForKey:@"url"];
 	}
 	return self;
 }
@@ -63,6 +67,12 @@
 	if (link) [encoder encodeObject:link forKey:@"link"];
 	if (summary) [encoder encodeObject:summary forKey:@"summary"];
 	if (url) [encoder encodeObject:url forKey:@"url"];
+    
+    NSMutableDictionary *imageDict = [NSMutableDictionary new];
+    if (imageLink) [imageDict setValue:imageLink forKey:@"link"];
+    if (imageTitle) [imageDict setValue:imageTitle forKey:@"title"];
+    if (imageURL) [imageDict setValue:imageURL forKey:@"url"];
+    if (imageDict.count > 0) [encoder encodeObject:[NSDictionary dictionaryWithDictionary:imageDict] forKey:@"image"];
 }
 
 @end

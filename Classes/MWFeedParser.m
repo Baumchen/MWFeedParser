@@ -610,6 +610,9 @@
                         if ([currentPath isEqualToString:@"/rss/channel/title"]) { if (processedText.length > 0) info.title = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/rss/channel/description"]) { if (processedText.length > 0) info.summary = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/rss/channel/link"]) { if (processedText.length > 0) info.link = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rss/channel/image/link"]) { if (processedText.length > 0) info.imageLink = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rss/channel/image/title"]) { if (processedText.length > 0) info.imageTitle = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rss/channel/image/url"]) { if (processedText.length > 0) info.imageURL = processedText; processed = YES; }
                     }
                     
                     break;
@@ -637,6 +640,9 @@
                         if ([currentPath isEqualToString:@"/rdf:RDF/channel/title"]) { if (processedText.length > 0) info.title = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/rdf:RDF/channel/description"]) { if (processedText.length > 0) info.summary = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/rdf:RDF/channel/link"]) { if (processedText.length > 0) info.link = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rdf:RDF/channel/image/link"]) { if (processedText.length > 0) info.imageLink = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rdf:RDF/channel/image/title"]) { if (processedText.length > 0) info.imageTitle = processedText; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/rdf:RDF/channel/image/url"]) { if (processedText.length > 0) info.imageURL = processedText; processed = YES; }
                     }
                     
                     break;
@@ -665,6 +671,7 @@
                         if ([currentPath isEqualToString:@"/feed/title"]) { if (processedText.length > 0) info.title = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/feed/description"]) { if (processedText.length > 0) info.summary = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/feed/link"]) { [self processAtomLink:currentElementAttributes andAddToMWObject:info]; processed = YES;}
+                        else if ([currentPath isEqualToString:@"/feed/icon"]) { if (processedText.length > 0) info.imageURL = processedText; processed = YES; }
                     }
                     
                     break;

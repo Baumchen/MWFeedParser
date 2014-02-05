@@ -35,12 +35,17 @@
 	NSString *link; // Feed link
 	NSString *summary; // Feed summary / description
 	NSURL *url; // Feed url
-	
+    NSString *imageLink;
+    NSString *imageTitle;
+	NSString *imageURL;
 }
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *link;
 @property (nonatomic, copy) NSString *summary;
 @property (nonatomic, copy) NSURL *url;
+@property (nonatomic, copy) NSString *imageLink;
+@property (nonatomic, copy) NSString *imageTitle;
+@property (nonatomic, copy) NSString *imageURL;
 
 @end
